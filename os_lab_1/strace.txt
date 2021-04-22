@@ -1,0 +1,82 @@
+vladislav@Alekseev:/mnt/c/VScode/3sem/OS/Vlad$ strace -f ./main < test.txt
+execve("./main", ["./main"], 0x7fffc4c0ab08 /* 19 vars */) = 0
+brk(NULL)                               = 0x7fffbb4ea000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=27430, ...}) = 0
+mmap(NULL, 27430, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fed529f6000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260\34\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2030544, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fed529f0000
+mmap(NULL, 4131552, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fed52200000
+mprotect(0x7fed523e7000, 2097152, PROT_NONE) = 0
+mmap(0x7fed525e7000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7fed525e7000  
+mmap(0x7fed525ed000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fed525ed000        
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7fed529f1500) = 0
+mprotect(0x7fed525e7000, 16384, PROT_READ) = 0
+mprotect(0x7fed52c01000, 4096, PROT_READ) = 0
+mprotect(0x7fed52827000, 4096, PROT_READ) = 0
+munmap(0x7fed529f6000, 27430)           = 0
+pipe([3, 4])                            = 0
+brk(NULL)                               = 0x7fffbb4ea000
+brk(0x7fffbb50b000)                     = 0x7fffbb50b000
+read(0, "1", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "2", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "3", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "4", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "5", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "6", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "7", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "8", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "9", 1)                         = 1
+read(0, " ", 1)                         = 1
+read(0, "1", 1)                         = 1
+read(0, "0", 1)                         = 1
+read(0, "", 1)                          = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fed529f17d0) = 27      
+strace: Process 27 attached
+[pid    26] close(3 <unfinished ...>
+[pid    27] close(4 <unfinished ...>
+[pid    26] <... close resumed> )       = 0
+[pid    27] <... close resumed> )       = 0
+[pid    26] read(0,  <unfinished ...>
+[pid    27] read(3,  <unfinished ...>
+[pid    26] <... read resumed> "", 1)   = 0
+[pid    26] write(4, "\0\0\0\0\0\0\0\0", 8) = 8
+[pid    26] write(4, "", 0)             = 0
+[pid    26] close(4 <unfinished ...>
+[pid    27] <... read resumed> "\0\0\0\0\0\0\0\0", 8) = 8
+[pid    26] <... close resumed> )       = 0
+[pid    26] wait4(-1,  <unfinished ...>
+[pid    27] read(3, "", 0)              = 0
+[pid    27] close(3)                    = 0
+[pid    27] openat(AT_FDCWD, "1 2 3 4 5 6 7 8 9 10", O_WRONLY|O_CREAT|O_TRUNC, 0600) = 3
+[pid    27] fstat(1, {st_mode=S_IFCHR|0666, st_rdev=makedev(1, 3), ...}) = 0
+[pid    27] ioctl(1, TCGETS, 0x7fffc23344a0) = -1 ENOTTY (Inappropriate ioctl for device)
+[pid    27] write(1, "Child: ", 7)      = 7
+[pid    27] write(1, "\n", 1)           = 1
+[pid    27] write(3, "", 0)             = 0
+[pid    27] close(3)                    = 0
+[pid    27] write(1, "Child exit\n", 11) = 11
+[pid    27] exit_group(0)               = ?
+[pid    27] +++ exited with 0 +++
+<... wait4 resumed> [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 27
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=27, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---   
+fstat(1, {st_mode=S_IFCHR|0666, st_rdev=makedev(1, 3), ...}) = 0
+ioctl(1, TCGETS, 0x7fffc23344f0)        = -1 ENOTTY (Inappropriate ioctl for device)
+write(1, "Parent: The child process exited"..., 71) = 71
+exit_group(0)                           = ?
++++ exited with 0 +++
