@@ -7,4 +7,4 @@
 5. [Variant 31](/tasks/task_5.pdf)
 6. [Variant 3](/tasks/task_6.pdf)
 ### Course project:
-1. [Last variant](/tasks/task_6.pdf)
+1. [Last variant](/tasks/task_cp.pdf)
